@@ -1,0 +1,16 @@
+.btnGroups {
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+.login-form {
+  background: #fffffe;
+  border-radius: 10px;
+  box-shadow: 9px 9px 35px #e3e3e2, -9px -9px 35px #ffffff;
+  padding: 20px;
+  margin: 20px;
+}
+.loginWith {
+  border-right: 1px solid rgb(10, 9, 9);
+}
