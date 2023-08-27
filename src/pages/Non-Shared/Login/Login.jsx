@@ -4,9 +4,15 @@ import { Button, Checkbox, Form, Input } from "antd";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../../redux/features/UserSlice";
 
 const Login = () => {
+  const {data}=useSelector((state)=>state.user)
+  console.log(data);
+  const dispatch = useDispatch()
   const onFinish = (values) => {
+    dispatch(login({name:"sdhfjsdfh"}))
     console.log("Success:", values);
   };
   const onFinishFailed = (errorInfo) => {
