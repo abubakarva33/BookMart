@@ -18,7 +18,7 @@ const Header = () => {
           <Nav className="" navbarScroll>
             <NavLink to="/all-books" className="navLink ms-4"> All Books </NavLink>
             <NavLink to="/login" className="navLink ms-4"> Login</NavLink>
-            <NavLink to="/register" className="navLink mx-4"> LogOut </NavLink>
+            <NavLink to="/register" className="navLink mx-4"> Register </NavLink>
           </Nav>
           <Form className="d-flex">
             <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
