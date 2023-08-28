@@ -4,19 +4,25 @@ import { Button, Checkbox, Form, Input } from "antd";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch} from "react-redux";
 import { useGetUserQuery } from "../../../redux/api";
 import { login } from "../../../redux/features/UserSlice";
+import { useState } from "react";
 
 const Login = () => {
+  const [isClicked , setIsClicked]=useState()
+  const [user,setUser]=useState()
+  console.log(user);
   const {data}=useGetUserQuery()
   const dispatch = useDispatch()
   const onFinish = ({email,password}) => {
-    const user=data.find(x=> x.email===email && x.password===password)
+    setUser(data.find(x=> x.email===email && x.password===password))
     if (user) {
       dispatch(login({user}))
     }
     else{
+      setUser({})
+      setIsClicked(true)
       return
     }
   };
@@ -77,7 +83,7 @@ const Login = () => {
                 placeholder="Password"
               />
             </Form.Item>
-            <div className="d-flex align-items-center justify-content-between mb-3">
+            <div className="d-flex align-items-center justify-content-between mb-2">
               <Form.Item name="remember" valuePropName="checked" className="checkboxForm">
                 <Checkbox>Remember me</Checkbox>
               </Form.Item>
@@ -88,12 +94,13 @@ const Login = () => {
                 </Link>
               </div>
             </div>
-
-            {/* <Form.Item>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Form.Item> */}
+            {
+              !user && isClicked ?
+              <div>
+                <p className="mb-2 text-danger">Email or password incorrect</p>
+              </div>
+              : null
+            }
 
             <div className="btnGroups">
               <Button type="primary" htmlType="submit" className="login-form-button mb-3 w-100">

@@ -6,20 +6,30 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useCreateUserMutation } from "../../../redux/api";
+import { useState } from "react";
+import ModalSuccess from "../../components/Modal/Modal";
 
 const Register = () => {
+  const [show, setShow] = useState(false);
+  const [isMatchedPass, setIsMatchedPass] = useState(true);
   const [form] = Form.useForm();
-  const [addUser, res] = useCreateUserMutation();
+  const [addUser] = useCreateUserMutation();
   const dispatch = useDispatch();
   const onFinish = (values) => {
+    if (values.password === values.confirmPassword) {
+      setIsMatchedPass(true);
+    } else {
+      setIsMatchedPass(false);
+      return;
+    }
     try {
       dispatch(addUser(values));
-      console.log("jsdhfuhsf");
+      form.resetFields();
     } catch (error) {
       console.log(error);
-    } 
-    finally {
+    } finally {
       form.resetFields();
+      setShow(true)
     }
   };
   return (
@@ -115,6 +125,7 @@ const Register = () => {
                 />
               </Form.Item>
             </div>
+            {!isMatchedPass ? <p className="text-danger">Passwords doesn't matched </p> : null}
             <div className="btnGroups">
               <Button type="primary" htmlType="submit" className="login-form-button mb-3 w-100">
                 Register
@@ -138,6 +149,13 @@ const Register = () => {
             </div>
           </Form>
         </Col>
+
+        <ModalSuccess
+        show={show}
+        setShow= {setShow}
+        >
+        </ModalSuccess>
+
       </Row>
     </div>
   );
