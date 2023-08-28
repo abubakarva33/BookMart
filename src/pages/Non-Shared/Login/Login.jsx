@@ -10,11 +10,10 @@ import { login } from "../../../redux/features/UserSlice";
 import { useState } from "react";
 
 const Login = () => {
-  const [isClicked , setIsClicked]=useState()
-  const [user,setUser]=useState()
-  console.log(user);
-  const {data}=useGetUserQuery()
-  const dispatch = useDispatch()
+  const [isClicked , setIsClicked]=useState();
+  const [user,setUser]=useState();
+  const {data}=useGetUserQuery();
+  const dispatch = useDispatch();
   const onFinish = ({email,password}) => {
     setUser(data.find(x=> x.email===email && x.password===password))
     if (user) {

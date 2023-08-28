@@ -67,7 +67,7 @@ const Register = () => {
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
                   type="name"
-                  placeholder="Email"
+                  placeholder="Full Name"
                 />
               </Form.Item>
             </div>
@@ -121,7 +121,7 @@ const Register = () => {
                 <Input
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
-                  placeholder="Password"
+                  placeholder="Confirm Password"
                 />
               </Form.Item>
             </div>

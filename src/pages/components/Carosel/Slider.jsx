@@ -13,16 +13,13 @@ const Slider = () => {
   return (
     <Carousel effect="fade" autoplay>
       <div>
-        <h3 style={contentStyle}>1</h3>
+        <img src="/images/slider1.webp" alt="" className="sliderImg"/>
       </div>
       <div>
-        <h3 style={contentStyle}>2</h3>
+      <img src="/images/slider2.webp" alt="" className="sliderImg"/>
       </div>
       <div>
-        <h3 style={contentStyle}>3</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>4</h3>
+      <img src="/images/slider3.webp" alt="" className="sliderImg"/>
       </div>
     </Carousel>
   );
