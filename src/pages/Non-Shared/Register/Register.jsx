@@ -4,10 +4,23 @@ import { Button, Form, Input } from "antd";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useCreateUserMutation } from "../../../redux/api";
 
 const Register = () => {
+  const [form] = Form.useForm();
+  const [addUser, res] = useCreateUserMutation();
+  const dispatch = useDispatch();
   const onFinish = (values) => {
-    console.log("Received values of form: ", { values });
+    try {
+      dispatch(addUser(values));
+      console.log("jsdhfuhsf");
+    } catch (error) {
+      console.log(error);
+    } 
+    finally {
+      form.resetFields();
+    }
   };
   return (
     <div>
@@ -20,6 +33,7 @@ const Register = () => {
           <Form
             name="normal_login"
             className="login-form"
+            form={form}
             layout="vertical"
             initialValues={{
               remember: true,

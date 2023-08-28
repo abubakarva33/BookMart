@@ -4,16 +4,21 @@ import { Button, Checkbox, Form, Input } from "antd";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
+import { useGetUserQuery } from "../../../redux/api";
 import { login } from "../../../redux/features/UserSlice";
 
 const Login = () => {
-  const {data}=useSelector((state)=>state.user)
-  console.log(data);
+  const {data}=useGetUserQuery()
   const dispatch = useDispatch()
-  const onFinish = (values) => {
-    dispatch(login({name:"sdhfjsdfh"}))
-    console.log("Success:", values);
+  const onFinish = ({email,password}) => {
+    const user=data.find(x=> x.email===email && x.password===password)
+    if (user) {
+      dispatch(login({user}))
+    }
+    else{
+      return
+    }
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);

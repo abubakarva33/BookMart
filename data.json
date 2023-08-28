@@ -1,0 +1,32 @@
+{
+  "authors": [
+    {
+      "username": "dfgdg",
+      "email": "gtfj@ds.dsf",
+      "password": "sdgsgsdgsg",
+      "confirmPassword": "yuiyuuioui",
+      "id": 1
+    },
+    {
+      "username": "dfgdg",
+      "email": "rt!@d.d",
+      "password": "sdgsgsdgsg",
+      "confirmPassword": "dfhfhfhfh",
+      "id": 2
+    },
+    {
+      "username": "fghfgh",
+      "email": "dfghdhf@sd.sd",
+      "password": "sdfgsfsfd",
+      "confirmPassword": "sdgsdgdg",
+      "id": 3
+    },
+    {
+      "username": "123",
+      "email": "a@s.d",
+      "password": "123123",
+      "confirmPassword": "123123",
+      "id": 4
+    }
+  ]
+}
