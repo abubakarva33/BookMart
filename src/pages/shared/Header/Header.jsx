@@ -10,7 +10,6 @@ import { logout } from "../../../redux/features/UserSlice";
 
 const Header = () => {
   const { isLogin } = useSelector((state) => state.user);
-  console.log(isLogin);
   const dispatch=useDispatch()
   return (
     <Navbar expand="lg" className="header">

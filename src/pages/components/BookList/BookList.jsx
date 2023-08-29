@@ -15,7 +15,6 @@ const BookList = () => {
           <Row xs={1} xm={2} md={3} className="g-4 mt-1 mb-5">
             {data.map((book, idx) => (
               <BookEach key={idx} book={book}>
-
               </BookEach>
             ))}
           </Row>

@@ -25,6 +25,10 @@ export const routes = createBrowserRouter([
             element: <AllBooks />,
           },
           {
+            path: "/books",
+            element: <AllBooks />,
+          },
+          {
             path: "/books/:bookId",
             element: <BookDetails />,
           },

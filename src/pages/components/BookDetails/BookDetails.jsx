@@ -4,14 +4,18 @@ import { useGetSelectedBookQuery } from "../../../redux/api";
 import Card from "react-bootstrap/Card";
 import { Col, Row } from "react-bootstrap";
 import Comment from "../Comment/Comment";
+import { Rate } from "antd";
+import { useState } from "react";
 
 const BookDetails = () => {
+  const desc = ["terrible", "bad", "normal", "good", "wonderful"];
+  const [value, setValue] = useState(3);
   const { bookId } = useParams();
   const { data } = useGetSelectedBookQuery(bookId);
   if (!data) {
     return "loading";
   }
-  const { authorName, picture, title, genra, registered, id } = data;
+  const { authorName, picture, title, genra, registered } = data;
   return (
     <div className="my-5">
       <Card className="card">
@@ -23,13 +27,18 @@ const BookDetails = () => {
             <Card.Body className="card-height d-flex flex-column justify-content-evenly align-items-between">
               <div>
                 <Card.Title>
-                  {" "}
-                  <h2> Book Title: {title}</h2>{" "}
+                  <h2> Book Title: {title}</h2>
                 </Card.Title>
                 <Card.Text>
                   <p>Author: {authorName}</p>
                   <p>Genra: {genra}</p>
                   <p> Publication Date: {registered}</p>
+                  <p>
+                    <span>
+                      Rate Book:
+                      <Rate tooltips={desc} onChange={setValue} value={value} className="ms-2" />
+                    </span>
+                  </p>
                 </Card.Text>
               </div>
               <div className="d-flex align-items-center justify-content-between">

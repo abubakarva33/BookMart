@@ -17,7 +17,7 @@ const Login = () => {
   const onFinish = ({email,password}) => {
     setUser(data.find(x=> x.email===email && x.password===password))
     if (user) {
-      dispatch(login({user}))
+      dispatch(login({user: user}))
     }
     else{
       setUser({})
