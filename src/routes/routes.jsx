@@ -6,6 +6,9 @@ import Login from "../pages/Non-Shared/Login/Login";
 import Register from "../pages/Non-Shared/Register/Register";
 import AllBooksLayout from "../layouts/AllBooksLayout";
 import BookDetails from "../pages/components/BookDetails/BookDetails";
+import AddBook from "../pages/Non-Shared/AddBook/AddBook";
+import Cart from "../pages/Non-Shared/Cart/Cart";
+import Bookmarks from "../pages/Non-Shared/Bookmarks/Bookmarks";
 
 export const routes = createBrowserRouter([
   {
@@ -41,6 +44,18 @@ export const routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/add-book",
+        element: <AddBook />,
+      },
+      {
+        path: "/my-cart",
+        element: <Cart />,
+      },
+      {
+        path: "/bookmarks",
+        element: <Bookmarks />,
       },
     ],
   },

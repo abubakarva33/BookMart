@@ -76,6 +76,42 @@
       "title": "amet veniam",
       "genra": "veniam",
       "registered": "28 Aug 2023"
+    },
+    {
+      "title": "bokor",
+      "authorName": "bokor vai",
+      "genra": "Thriller",
+      "picture": "/images/book2.webp",
+      "userId": 1,
+      "registered": "17-08-2023",
+      "id": "n-a_hTd"
+    },
+    {
+      "title": "biology",
+      "authorName": "bokor vai",
+      "genra": "Science Fiction",
+      "picture": "/images/book4.webp",
+      "userId": 1,
+      "registered": "08-08-2023",
+      "id": "pDzwlD9"
+    },
+    {
+      "title": "bokor",
+      "authorName": "bokor vai",
+      "genra": "Religious",
+      "picture": "/images/book3.webp",
+      "userId": 1,
+      "registered": "15-08-2023",
+      "id": "rkRziak"
+    },
+    {
+      "title": "bokor",
+      "authorName": "bokor vai",
+      "genra": "Science Fiction",
+      "picture": "/images/book2.webp",
+      "userId": 1,
+      "registered": "22-08-2023",
+      "id": "DNFRvXA"
     }
   ],
   "reviews": [

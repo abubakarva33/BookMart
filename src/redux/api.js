@@ -10,6 +10,7 @@ export const api = createApi({
     }),
     getBooks: builder.query({
       query: () => `books`,
+      providesTags: ['Post'],
     }),
     getSelectedBook: builder.query({
       query: (id) => `books/${id}`,
@@ -26,6 +27,14 @@ export const api = createApi({
       }),
       invalidatesTags: ['Post'],
     }),
+    postABook: builder.mutation({
+      query: ({ ...body }) => ({
+        url: `books`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ['Post'],
+    }),
     createUser: builder.mutation({
       query: ({ ...body }) => ({
         url: `authors`,
@@ -36,4 +45,4 @@ export const api = createApi({
   }),
 });
 
-export const { useGetUserQuery, useCreateUserMutation, useGetBooksQuery ,useGetSelectedBookQuery, useGetCommentsQuery, usePostACommentMutation} = api;
+export const { useGetUserQuery, useCreateUserMutation, useGetBooksQuery ,useGetSelectedBookQuery, useGetCommentsQuery, usePostACommentMutation , usePostABookMutation} = api;

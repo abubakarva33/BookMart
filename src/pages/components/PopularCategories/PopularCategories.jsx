@@ -43,7 +43,7 @@ const PopularCategories = () => {
         <Col>
           <div className="category">
             <GiCrimeSceneTape className="fs-1 m-4 " color="#00473e" />
-            <h5>Crime</h5>
+            <h5>Others</h5>
           </div>
         </Col>
       </Row>

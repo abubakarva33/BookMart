@@ -10,7 +10,7 @@ import { logout } from "../../../redux/features/UserSlice";
 
 const Header = () => {
   const { isLogin } = useSelector((state) => state.user);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   return (
     <Navbar expand="lg" className="header">
       <Container fluid>
@@ -21,17 +21,26 @@ const Header = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="" navbarScroll>
             <NavLink to="/books" className="navLink ms-4">
-              {" "}
-              All Books{" "}
+              All-Books
             </NavLink>
             {isLogin ? (
-              <button  className="navLink ms-4" onClick={dispatch(logout())}>
+              <button className="navLink ms-4" onClick={dispatch(logout())}>
                 Log out
               </button>
             ) : (
               <div>
-                <NavLink to="/login" className="navLink ms-4">
-
+                {/* -----------changeable part ----------*/}
+                <NavLink to="/add-book" className="navLink mx-2">
+                  Add Books
+                </NavLink>
+                <NavLink to="/my-cart" className="navLink mx-2">
+                  My Cart
+                </NavLink>
+                <NavLink to="/bookmarks" className="navLink mx-2">
+                  Bookmarks
+                </NavLink>
+                {/* ------------------------------------------ */}
+                <NavLink to="/login" className="navLink ms-2">
                   Login
                 </NavLink>
                 <NavLink to="/register" className="navLink mx-4">

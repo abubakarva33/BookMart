@@ -5,12 +5,14 @@ import Footer from "../pages/shared/Footer/Footer";
 
 const Main = () => {
   return (
-    <div>
-      <Header />
-      <div className="outlet">
-        <Outlet />
+    <div className="mainBody">
+      <div>
+        <Header />
+        <div className="outlet">
+          <Outlet />
+        </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
