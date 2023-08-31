@@ -48,15 +48,27 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/add-book",
-        element:<AuthLayout> <AddBook /> </AuthLayout>,
+        element: (
+          <AuthLayout>
+            <AddBook />
+          </AuthLayout>
+        ),
       },
       {
         path: "/my-cart",
-        element: <Cart />,
+        element: (
+          <AuthLayout>
+            <Cart />
+          </AuthLayout>
+        ),
       },
       {
         path: "/bookmarks",
-        element: <Bookmarks />,
+        element: (
+          <AuthLayout>
+            <Bookmarks />
+          </AuthLayout>
+        ),
       },
     ],
   },

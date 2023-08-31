@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./BookDetails.css";
 import { useGetSelectedBookQuery } from "../../../redux/api";
 import Card from "react-bootstrap/Card";
@@ -6,7 +6,7 @@ import { Col, Row } from "react-bootstrap";
 import Comment from "../Comment/Comment";
 import { Rate } from "antd";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/features/BookSlice";
 
 const BookDetails = () => {
@@ -14,7 +14,15 @@ const BookDetails = () => {
   const [value, setValue] = useState(3);
   const { bookId } = useParams();
   const { data } = useGetSelectedBookQuery(bookId);
-  const dispatch =useDispatch()
+  const dispatch =useDispatch();
+  const { isLogin,user} = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const cartHandler = () => {
+    if (!isLogin) {
+      return navigate("/login");
+    }
+    dispatch(addToCart(data,user.id));
+  };
   if (!data) {
     return "loading";
   }
@@ -46,7 +54,7 @@ const BookDetails = () => {
                 </Card.Text>
               </div>
               <div className="d-flex align-items-center justify-content-between">
-                <button className="border-0 rounded fs-5 py-2" onClick={()=>dispatch(addToCart(data))}> Add to Cart</button>
+                <button className="border-0 rounded fs-5 py-2" onClick={cartHandler}> Add to Cart</button>
                 <button className="border-0 rounded fs-5 py-2"> Read Later</button>
               </div>
             </Card.Body>

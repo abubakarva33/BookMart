@@ -1,14 +1,16 @@
-import { useSelector } from "react-redux";
+
 import "./Cart.css";
 import { Row } from "react-bootstrap";
+import CartBookList from "../../components/CartBookList/CartBookList";
+import { useGetCartDataQuery } from "../../../redux/api";
 
 const Cart = () => {
-    const {booksInCarts}=useSelector(state=>state.book)
-    console.log(booksInCarts);
+    const {data} = useGetCartDataQuery()
+    console.log(data);
     return (
-        <Row xs={1} xm={2} md={3} className="g-4 mt-1 mb-5">
-          {booksInCarts?.length !=0 ? (
-            booksInCarts?.map((book, idx) => <BookEach key={idx} book={book} />)
+        <Row xs={1} xm={2} md={4} className="g-4 mt-1 mb-5">
+          {data?.length !==0 ? (
+            data?.map((book, idx) => <CartBookList key={idx} book={book} />)
           ) : (
             <p> No book found with this criteria</p>
           )}

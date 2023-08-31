@@ -38,192 +38,43 @@
   ],
   "books": [
     {
-      "id": "1",
-      "picture": "/images/book1.webp",
-      "authorName": "Kemp Burgess",
-      "title": "occaecat nostrud",
-      "genra": "nostrud",
-      "registered": "28 Aug 2023"
-    },
-    {
-      "id": "64eccac4b50bbf400b089084",
-      "picture": "/images/book2.webp",
-      "authorName": "Megan Hardy",
-      "title": "deserunt cupidatat",
-      "genra": "ipsum",
-      "registered": "28 Aug 2023"
-    },
-    {
-      "id": "64eccac4de3f62e9a64bf803",
-      "picture": "/images/book3.webp",
-      "authorName": "Kaitlin Silva",
-      "title": "mollit culpa",
-      "genra": "exercitation",
-      "registered": "28 Aug 2023"
-    },
-    {
-      "id": "64eccac43aed37dd36c8b0f8",
-      "picture": "/images/book4.webp",
-      "authorName": "Norris Craig",
-      "title": "id duis",
-      "genra": "ipsum",
-      "registered": "28 Aug 2023"
-    },
-    {
-      "id": "64eccac4ec1a40d2615c9114",
-      "picture": "/images/book5.webp",
-      "authorName": "Kirsten Austin",
-      "title": "amet veniam",
-      "genra": "veniam",
-      "registered": "28 Aug 2023"
-    },
-    {
       "title": "bokor",
-      "authorName": "bokor vai",
-      "genra": "Thriller",
-      "picture": "/images/book2.webp",
-      "userId": 1,
-      "registered": "17-08-2023",
-      "id": "n-a_hTd"
+      "authorName": "bokor",
+      "genra": "Horor",
+      "picture": "/images/book3.webp",
+      "registered": "28-09-2023",
+      "user": {
+        "username": "dfgdsg",
+        "email": "bakar@gmail.com",
+        "id": 5
+      },
+      "id": 1
     },
     {
       "title": "biology",
-      "authorName": "bokor vai",
-      "genra": "Science Fiction",
-      "picture": "/images/book4.webp",
-      "userId": 1,
-      "registered": "08-08-2023",
-      "id": "pDzwlD9"
-    },
-    {
-      "title": "bokor",
-      "authorName": "bokor vai",
-      "genra": "Religious",
-      "picture": "/images/book3.webp",
-      "userId": 1,
-      "registered": "15-08-2023",
-      "id": "rkRziak"
-    },
-    {
-      "title": "bokor",
-      "authorName": "bokor vai",
-      "genra": "Science Fiction",
-      "picture": "/images/book2.webp",
-      "userId": 1,
-      "registered": "22-08-2023",
-      "id": "DNFRvXA"
+      "authorName": "mithil",
+      "genra": "Romantic",
+      "picture": "/images/book5.webp",
+      "registered": "12-09-2023",
+      "user": {
+        "username": "dfgdsg",
+        "email": "bakar@gmail.com",
+        "id": 5
+      },
+      "id": 2
     },
     {
       "title": "botany",
-      "authorName": "bokor",
-      "genra": "Science Fiction",
+      "authorName": "bokor vai",
+      "genra": "Romantic",
       "picture": "/images/book4.webp",
-      "userId": 1,
-      "registered": "24-08-2023",
-      "id": "8hnnrj8"
-    },
-    {
-      "title": "bokor",
-      "authorName": "gykghkg",
-      "genra": "Horor",
-      "picture": "/images/book4.webp",
-      "userId": 1,
-      "registered": "09-09-2023",
-      "user": {
-        "authUser": {
-          "username": "dfgdsg",
-          "email": "bakar@gmail.com",
-          "password": "123",
-          "confirmPassword": "123",
-          "id": 5
-        }
-      },
-      "id": "nK21UdX"
-    },
-    {
-      "title": "bokor",
-      "authorName": "bokor vai",
-      "genra": "Horor",
-      "picture": "/images/book5.webp",
-      "userId": 1,
-      "registered": "08-09-2023",
-      "user": {
-        "username": "dfgdsg",
-        "email": "bakar@gmail.com",
-        "password": "123",
-        "confirmPassword": "123",
-        "id": 5
-      },
-      "id": "7rpjbeW"
-    },
-    {
-      "title": "biology",
-      "authorName": "bokor vai",
-      "genra": "Religious",
-      "picture": "/images/book3.webp",
-      "userId": 1,
-      "registered": "09-08-2023",
-      "user": {
-        "username": "dfgdg",
-        "email": "a@s.d",
-        "password": "123",
-        "confirmPassword": "123",
-        "id": 4
-      },
-      "id": "xN6kLLv"
-    },
-    {
-      "title": "sorubal",
-      "authorName": "gykghkg",
-      "genra": "Science Fiction",
-      "picture": "/images/book2.webp",
-      "userId": 1,
-      "registered": "10-08-2023",
+      "registered": "25-09-2023",
       "user": {
         "username": "dfgdsg",
         "email": "bakar@gmail.com",
         "id": 5
       },
-      "id": "gVEOFPE"
-    },
-    {
-      "title": "bokor",
-      "authorName": "bokor vai",
-      "genra": "Science Fiction",
-      "picture": "/images/book3.webp",
-      "registered": "10-08-2023",
-      "user": {
-        "username": "dfgdsg",
-        "email": "bakar@gmail.com",
-        "id": 5
-      },
-      "id": "11Pznns"
-    },
-    {
-      "title": "book 1",
-      "authorName": "bakar",
-      "genra": "Religious",
-      "picture": "/images/book3.webp",
-      "registered": "17-08-2023",
-      "user": {
-        "username": "dfgdsg",
-        "email": "bakar@gmail.com",
-        "id": 5
-      },
-      "id": "VoIHZya"
-    },
-    {
-      "title": "new",
-      "authorName": "mithil",
-      "genra": "others",
-      "picture": "/images/book2.webp",
-      "registered": "16-08-2023",
-      "user": {
-        "username": "dfgdsg",
-        "email": "bakar@gmail.com",
-        "id": 5
-      },
-      "id": "cr8FLko"
+      "id": 3
     }
   ],
   "reviews": [
@@ -468,6 +319,71 @@
       },
       "bookId": "cr8FLko",
       "id": 33
+    }
+  ],
+  "cartData": [
+    {
+      "book": {
+        "title": "botany",
+        "authorName": "bokor vai",
+        "genra": "Romantic",
+        "picture": "/images/book4.webp",
+        "registered": "25-09-2023",
+        "user": {
+          "username": "dfgdsg",
+          "email": "bakar@gmail.com",
+          "id": 5
+        },
+        "id": 3
+      },
+      "user": {
+        "username": "dfgdsg",
+        "email": "bakar@gmail.com",
+        "id": 5
+      },
+      "id": 1
+    },
+    {
+      "book": {
+        "title": "botany",
+        "authorName": "bokor vai",
+        "genra": "Romantic",
+        "picture": "/images/book4.webp",
+        "registered": "25-09-2023",
+        "user": {
+          "username": "dfgdsg",
+          "email": "bakar@gmail.com",
+          "id": 5
+        },
+        "id": 3
+      },
+      "user": {
+        "username": "dfgdsg",
+        "email": "bakar@gmail.com",
+        "id": 5
+      },
+      "id": 2
+    },
+    {
+      "book": {
+        "title": "biology",
+        "authorName": "mithil",
+        "genra": "Romantic",
+        "picture": "/images/book5.webp",
+        "registered": "12-09-2023",
+        "user": {
+          "username": "dfgdsg",
+          "email": "bakar@gmail.com",
+          "id": 5
+        },
+        "id": 2
+      },
+      "user": {
+        "username": "dfgdsg",
+        "email": "bakar@gmail.com",
+        "id": 5
+      },
+      "id": 3
     }
   ]
 }

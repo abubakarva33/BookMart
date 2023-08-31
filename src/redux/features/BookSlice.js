@@ -42,9 +42,12 @@ export const bookSlice = createSlice({
         state.booksInCarts.push(payload);
       }
     },
+    removeFromCart: (state, { payload }) => {
+      state.booksInCarts = state.booksInCarts.filter(item => item.id !== payload.id);
+    },
   },
 });
 
-export const { searchByBook, setBooks, filterByGenra, addToCart } = bookSlice.actions;
+export const { searchByBook, setBooks, filterByGenra, addToCart,removeFromCart} = bookSlice.actions;
 const userReducer = bookSlice.reducer;
 export default userReducer;
