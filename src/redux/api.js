@@ -9,14 +9,14 @@ export const api = createApi({
       query: () => `authors`,
     }),
     getBooks: builder.query({
-      query: () => `books`,
+      query: () => `books?_sort=id&_order=desc`,
       providesTags: ['Post'],
     }),
     getSelectedBook: builder.query({
       query: (id) => `books/${id}`,
     }),
     getComments: builder.query({
-      query: () => `reviews`,
+      query: (bookId) => `reviews?bookId=${bookId}&_sort=id&_order=desc`,
       providesTags: ['Post'],
     }),
     postAComment: builder.mutation({

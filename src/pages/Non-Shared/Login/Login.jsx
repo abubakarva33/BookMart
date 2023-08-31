@@ -3,26 +3,32 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
-import { useDispatch} from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useGetUserQuery } from "../../../redux/api";
 import { login } from "../../../redux/features/UserSlice";
 import { useState } from "react";
 
 const Login = () => {
-  const [isClicked , setIsClicked]=useState();
-  const [user,setUser]=useState();
-  const {data}=useGetUserQuery();
+  const [isClicked, setIsClicked] = useState();
+  const { data } = useGetUserQuery("", { refetchOnFocus: true, refetchOnMountOrArgChange: true });
   const dispatch = useDispatch();
-  const onFinish = ({email,password}) => {
-    setUser(data.find(x=> x.email===email && x.password===password))
-    if (user) {
-      dispatch(login({user: user}))
+  const navigate=useNavigate()
+
+  const onFinish = ({ email, password }) => {
+    const authUser = data.find((d) => d.email === email);
+
+    if (!authUser) {
+      setIsClicked(true);
+      return;
     }
-    else{
-      setUser({})
-      setIsClicked(true)
-      return
+
+    if (authUser.password === password) {
+      const user = { ...authUser, password: undefined, confirmPassword: undefined };
+      dispatch(login(user));
+      navigate('/')
+    } else {
+      setIsClicked(true);
     }
   };
   const onFinishFailed = (errorInfo) => {
@@ -31,7 +37,7 @@ const Login = () => {
 
   return (
     <div>
-      <Row className="userForm">
+      <Row className="userForm gx-0">
         <Col xs={12} md={8} className="login-left">
           <h1>WELCOME TO BOOK MART</h1>
           <p>Sign in to continue access</p>
@@ -93,13 +99,11 @@ const Login = () => {
                 </Link>
               </div>
             </div>
-            {
-              !user && isClicked ?
+            {isClicked ? (
               <div>
                 <p className="mb-2 text-danger">Email or password incorrect</p>
               </div>
-              : null
-            }
+            ) : null}
 
             <div className="btnGroups">
               <Button type="primary" htmlType="submit" className="login-form-button mb-3 w-100">
@@ -119,7 +123,7 @@ const Login = () => {
                 </Button>
               </div>
               <p>
-                Don't have an account? <Link to="/register">Register now!</Link>
+                Don&apos;t have an account? <Link to="/register">Register now!</Link>
               </p>
             </div>
           </Form>

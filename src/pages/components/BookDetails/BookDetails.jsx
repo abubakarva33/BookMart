@@ -6,16 +6,20 @@ import { Col, Row } from "react-bootstrap";
 import Comment from "../Comment/Comment";
 import { Rate } from "antd";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../redux/features/BookSlice";
 
 const BookDetails = () => {
   const desc = ["terrible", "bad", "normal", "good", "wonderful"];
   const [value, setValue] = useState(3);
   const { bookId } = useParams();
   const { data } = useGetSelectedBookQuery(bookId);
+  const dispatch =useDispatch()
   if (!data) {
     return "loading";
   }
-  const { authorName, picture, title, genra, registered } = data;
+  const { authorName, picture, title, genra, registered ,id
+  } = data;
   return (
     <div className="my-5">
       <Card className="card">
@@ -42,13 +46,13 @@ const BookDetails = () => {
                 </Card.Text>
               </div>
               <div className="d-flex align-items-center justify-content-between">
-                <button className="border-0 rounded fs-5 py-2"> Add to Cart</button>
+                <button className="border-0 rounded fs-5 py-2" onClick={()=>dispatch(addToCart(data))}> Add to Cart</button>
                 <button className="border-0 rounded fs-5 py-2"> Read Later</button>
               </div>
             </Card.Body>
           </Col>
         </Row>
-        <Comment/>
+        <Comment id={id}/>
       </Card>
     </div>
   );

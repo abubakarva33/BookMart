@@ -34,7 +34,7 @@ const Register = () => {
   };
   return (
     <div>
-      <Row className="userForm">
+      <Row className="userForm gx-0">
         <Col xs={12} md={8} className="login-left">
           <h1>WELCOME TO BOOK MART</h1>
           <p>Sign in to continue access</p>

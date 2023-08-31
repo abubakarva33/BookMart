@@ -3,9 +3,12 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import { BiBook } from "react-icons/bi";
 import { CiCalendarDate } from "react-icons/ci";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToCart } from "../../../redux/features/BookSlice";
 
 const BookEach = ({ book }) => {
+  const dispatch = useDispatch();
   const { authorName, picture, title, genra, registered, id } = book;
   return (
     <Col>
@@ -25,7 +28,12 @@ const BookEach = ({ book }) => {
                 </p>
               </div>
               <div className="d-flex align-items-center justify-content-between">
-                <button className="border-0 rounded fs-5 py-2"> Add to Cart</button>
+                <button
+                  className="border-0 rounded fs-5 py-2"
+                  onClick={() => dispatch(addToCart(book))}
+                >
+                  Add to Cart
+                </button>
                 <button className="border-0 rounded fs-5 py-2"> Read Later</button>
               </div>
             </Card.Text>

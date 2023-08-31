@@ -4,18 +4,21 @@ import { DatePicker } from "antd";
 import { usePostABookMutation } from "../../../redux/api";
 const { Option } = Select;
 import swal from "sweetalert";
+import { useSelector } from "react-redux";
 
 const AddBook = () => {
+  const { user } = useSelector((state) => state.user);
   const [createBook] = usePostABookMutation();
   const [form] = Form.useForm();
+
   const onFinish = (values) => {
     const { image, registered, ...items } = values;
     const picture = `/images/${image}.webp`;
     const data = {
       ...items,
       picture,
-      userId: 1,
       registered: registered.format("DD-MM-YYYY"),
+      user,
     };
     createBook(data);
     form.resetFields();

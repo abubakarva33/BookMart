@@ -4,14 +4,15 @@ import { Button, Form } from "antd";
 import { Col, Row } from "react-bootstrap";
 import { BiUserCircle } from "react-icons/bi";
 import { useGetCommentsQuery, usePostACommentMutation } from "../../../redux/api";
+import { useSelector } from "react-redux";
 
-
-const Comment = () => {
-  const {data ,isLoading}=useGetCommentsQuery();
+const Comment = ({ id }) => {
+  const { user } = useSelector((state) => state.user);
+  const { data, isLoading } = useGetCommentsQuery(id);
   const [form] = Form.useForm();
-  const [postAComment]=usePostACommentMutation()
-  const onFinish = (values) => {
-    postAComment(values)
+  const [postAComment] = usePostACommentMutation();
+  const onFinish = ({ about }) => {
+    postAComment({ about, user, bookId: id });
     form.resetFields();
   };
   const onFinishFailed = (errorInfo) => {
@@ -59,14 +60,18 @@ const Comment = () => {
         </Row>
       </Form>
       <h5 className="ms-2">Latest Reviews</h5>
-      {!isLoading && data.map((review) => (
-        <div key={review.id} className="d-flex align-items-center border rounded mb-3 mx-2">
-          <p className="fs-1 me-2 ps-2">
-            <BiUserCircle />
-          </p>
-          <p>{review.about}</p>
-        </div>
-      ))}
+      {!isLoading &&
+        data.map((review) => (
+          <div key={review.id} className="d-flex align-items-center border rounded mb-3 mx-2">
+            <p className="fs-1 me-2 ps-2">
+              <abbr title={user?.username ? `${user.username}` : "Unknown User"}>
+                {" "}
+                <BiUserCircle />{" "}
+              </abbr>
+            </p>
+            <p>{review.about}</p>
+          </div>
+        ))}
     </div>
   );
 };

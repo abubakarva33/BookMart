@@ -1,16 +1,32 @@
 import { NavLink } from "react-router-dom";
 import "./Header.css";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/features/UserSlice";
+import { Button, Form, Input } from "antd";
+import { searchByBook, setBooks } from "../../../redux/features/BookSlice";
+import { useGetBooksQuery } from "../../../redux/api";
+import { useEffect } from "react";
 
 const Header = () => {
   const { isLogin } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  const { data } = useGetBooksQuery();
+
+  useEffect(() => {
+    dispatch(setBooks(data));
+  }, [data]);
+
+  const logoutHandler = () => {
+    dispatch(logout({}));
+    localStorage.clear();
+  };
+  const onFinish = ({ searchBox }) => {
+    dispatch(searchByBook(searchBox));
+  };
   return (
     <Navbar expand="lg" className="header">
       <Container fluid>
@@ -20,16 +36,12 @@ const Header = () => {
         <Navbar.Toggle aria-controls="navbarScroll" className="headerSide" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="" navbarScroll>
-            <NavLink to="/books" className="navLink ms-4">
+            <NavLink to="/books" className="navLink mx-2">
               All-Books
             </NavLink>
+
             {isLogin ? (
-              <button className="navLink ms-4" onClick={dispatch(logout())}>
-                Log out
-              </button>
-            ) : (
-              <div>
-                {/* -----------changeable part ----------*/}
+              <>
                 <NavLink to="/add-book" className="navLink mx-2">
                   Add Books
                 </NavLink>
@@ -39,6 +51,12 @@ const Header = () => {
                 <NavLink to="/bookmarks" className="navLink mx-2">
                   Bookmarks
                 </NavLink>
+                <button className="navLink mx-2 border-0" onClick={logoutHandler}>
+                  Log out
+                </button>
+              </>
+            ) : (
+              <div>
                 {/* ------------------------------------------ */}
                 <NavLink to="/login" className="navLink ms-2">
                   Login
@@ -49,9 +67,16 @@ const Header = () => {
               </div>
             )}
           </Nav>
-          <Form className="d-flex">
-            <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-            <Button variant="outline-success text-white">Search</Button>
+          <Form className="d-flex" onFinish={onFinish}>
+            <Form.Item name="searchBox" className="me-2">
+              <Input htmlType="search" />
+            </Form.Item>
+
+            <Form.Item>
+              <Button variant="outline-success text-white" htmlType="submit">
+                Search
+              </Button>
+            </Form.Item>
           </Form>
         </Navbar.Collapse>
       </Container>

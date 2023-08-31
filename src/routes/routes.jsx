@@ -9,6 +9,7 @@ import BookDetails from "../pages/components/BookDetails/BookDetails";
 import AddBook from "../pages/Non-Shared/AddBook/AddBook";
 import Cart from "../pages/Non-Shared/Cart/Cart";
 import Bookmarks from "../pages/Non-Shared/Bookmarks/Bookmarks";
+import AuthLayout from "../layouts/AuthLayout";
 
 export const routes = createBrowserRouter([
   {
@@ -17,12 +18,12 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/books",
         element: <AllBooksLayout />,
         children: [
+          {
+            path: "/",
+            element: <AllBooks />,
+          },
           {
             path: "/books",
             element: <AllBooks />,
@@ -47,7 +48,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/add-book",
-        element: <AddBook />,
+        element:<AuthLayout> <AddBook /> </AuthLayout>,
       },
       {
         path: "/my-cart",
