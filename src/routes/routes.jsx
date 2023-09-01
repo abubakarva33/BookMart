@@ -10,6 +10,7 @@ import AddBook from "../pages/Non-Shared/AddBook/AddBook";
 import Cart from "../pages/Non-Shared/Cart/Cart";
 import Bookmarks from "../pages/Non-Shared/Bookmarks/Bookmarks";
 import AuthLayout from "../layouts/AuthLayout";
+import MyBooks from "../pages/Non-Shared/MyBooks/MyBooks";
 
 export const routes = createBrowserRouter([
   {
@@ -63,12 +64,16 @@ export const routes = createBrowserRouter([
         ),
       },
       {
-        path: "/bookmarks",
+        path: "/my-books",
         element: (
           <AuthLayout>
-            <Bookmarks />
+            <MyBooks />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/bookmarks",
+        element: <Bookmarks />,
       },
     ],
   },

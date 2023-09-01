@@ -4,16 +4,19 @@ import bookReducer from "./features/BookSlice";
 import { api } from "./api";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import bookmarkReducer from "./features/BookmarkSlice";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user"],
+  whitelist: ["user", "bookmark"],
 };
 
 const rootReducer = combineReducers({
   user: userReducer,
   book: bookReducer,
+  bookmark :bookmarkReducer,
+
   [api.reducerPath]: api.reducer,
 });
 

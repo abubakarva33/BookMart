@@ -5,20 +5,24 @@ import { BiBook } from "react-icons/bi";
 import { CiCalendarDate } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addToCart } from "../../../redux/features/BookSlice";
-import { useAddToCartMutation } from "../../../redux/api";
+import { useAddToCartMutation, useGetCartDataQuery } from "../../../redux/api";
+import { addToBookmark } from "../../../redux/features/BookmarkSlice";
 
 const BookEach = ({ book }) => {
   const { authorName, picture, title, genra, registered, id } = book;
   const dispatch = useDispatch();
-  const { isLogin,user} = useSelector((state) => state.user);
-  const [addToCartBook]= useAddToCartMutation()
+  const { isLogin, user } = useSelector((state) => state.user);
+  const [addToCartBook] = useAddToCartMutation();
+  const { data } = useGetCartDataQuery();
   const navigate = useNavigate();
   const cartHandler = () => {
     if (!isLogin) {
       return navigate("/login");
     }
-    dispatch(addToCartBook({book,user}))
+    const existingData = data.find((item) => item.book.id === id)
+    if (!existingData) {
+      dispatch(addToCartBook({ book, user }));
+    }
   };
   return (
     <Col>
@@ -44,7 +48,7 @@ const BookEach = ({ book }) => {
           <button className="border-0 rounded fs-5 py-2" onClick={cartHandler}>
             Add to Cart
           </button>
-          <button className="border-0 rounded fs-5 py-2"> Read Later</button>
+          <button className="border-0 rounded fs-5 py-2" onClick={()=>dispatch(addToBookmark(book))}> Read Later</button>
         </div>
       </Card>
     </Col>

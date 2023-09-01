@@ -3,18 +3,16 @@ import "./CartBookList.css";
 import { BiBook } from "react-icons/bi";
 import { CiCalendarDate } from "react-icons/ci";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../../redux/features/BookSlice";
 import { useRemoveCartDataMutation } from "../../../redux/api";
 
 
 const CartBookList = ({ book }) => {
-    console.log(book.id);
   const { authorName, picture, title, genra, registered } = book.book;
   const [removeCartData]=useRemoveCartDataMutation()
   const dispatch = useDispatch();
   return (
     <Col>
-        <Card className="card">
+        <Card className="card mx-2" >
           <Card.Img variant="top" src={picture} className="cardImg" />
           <Card.Body>
             <Card.Title>Title: {title}</Card.Title>
@@ -31,7 +29,7 @@ const CartBookList = ({ book }) => {
               <div className="d-flex align-items-center justify-content-center">
                 <button
                   className="border-0 rounded fs-5 py-2"
-                  onClick={() => dispatch(removeCartData(book))}
+                  onClick={() => dispatch(removeCartData(book.id))}
                 >
                   Remove from cart
                 </button>

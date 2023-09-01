@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   books: [],
   filteredBooks: [],
-  booksInCarts: [],
+  filteredBooksByAuthor: [],
 };
 
 export const bookSlice = createSlice({
@@ -32,22 +32,22 @@ export const bookSlice = createSlice({
         state.filteredBooks = state.books;
       }
     },
+    filterByAuthor: (state, { payload }) => {
+      console.log(payload);
+      if (payload) {
+        state.filteredBooksByAuthor = state.books.filter((item) => item.user.id === payload);
+        if (!state.filteredBooksByAuthor) {
+          state.filteredBooksByAuthor = [];
+        }
+      }
+    },
     setBooks: (state, { payload }) => {
       state.books = payload;
       state.filteredBooks = payload;
     },
-    addToCart: (state, { payload }) => {
-      const existingData= state.booksInCarts.filter(item => item.id === payload.id).length > 0;
-      if (!existingData) {
-        state.booksInCarts.push(payload);
-      }
-    },
-    removeFromCart: (state, { payload }) => {
-      state.booksInCarts = state.booksInCarts.filter(item => item.id !== payload.id);
-    },
   },
 });
 
-export const { searchByBook, setBooks, filterByGenra, addToCart,removeFromCart} = bookSlice.actions;
+export const { searchByBook, setBooks, filterByGenra, filterByAuthor } = bookSlice.actions;
 const userReducer = bookSlice.reducer;
 export default userReducer;

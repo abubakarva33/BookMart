@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/" }),
-  tagTypes: ["Post", "User"],
+  tagTypes: ["Post", "User", "cart"],
   endpoints: (builder) => ({
     getUser: builder.query({
       query: () => `authors`,
@@ -14,6 +14,11 @@ export const api = createApi({
     }),
     getSelectedBook: builder.query({
       query: (id) => `books/${id}`,
+      providesTags: ["Post"],
+    }),
+    getBooksByAuthor: builder.query({
+      query: (authorId) => `books/?user.id=${authorId}`,
+      providesTags: ["Post"],
     }),
     getComments: builder.query({
       query: (bookId) => `reviews?bookId=${bookId}&_sort=id&_order=desc`,
@@ -41,17 +46,18 @@ export const api = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["Post"],
+      invalidatesTags: ["cart"],
     }),
     getCartData: builder.query({
       query: () => `cartData`,
+      providesTags: ["cart"],
     }),
     removeCartData: builder.mutation({
-      query: ({id, ...body}) => ({
-        url: `cartData${id}`,
+      query: (id) => ({
+        url: `cartData/${id}`,
         method: "DELETE",
-        body,
       }),
+      invalidatesTags: ["cart"],
     }),
     createUser: builder.mutation({
       query: ({ ...body }) => ({
@@ -73,5 +79,6 @@ export const {
   usePostABookMutation,
   useGetCartDataQuery,
   useAddToCartMutation,
-  useRemoveCartDataMutation
+  useRemoveCartDataMutation,
+  useGetBooksByAuthorQuery
 } = api;

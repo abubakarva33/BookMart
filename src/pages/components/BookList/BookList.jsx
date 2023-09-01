@@ -1,10 +1,17 @@
 import "./BookList.css";
 import Row from "react-bootstrap/Row";
 import BookEach from "../BookEach/BookEach";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { filterByGenra } from "../../../redux/features/BookSlice";
 
 const BookList = () => {
+  const dispatch =useDispatch()
   const {filteredBooks } = useSelector((state) => state.book);
+  console.log(filteredBooks);
+  useEffect(()=> {
+    dispatch(filterByGenra())
+  }, [])
   return (
     <div>
       <>

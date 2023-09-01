@@ -6,12 +6,18 @@ import Navbar from "react-bootstrap/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/features/UserSlice";
 import { Button, Form, Input } from "antd";
-import { searchByBook, setBooks } from "../../../redux/features/BookSlice";
+import {
+  filterByGenra,
+  searchByBook,
+  setBooks,
+  filterByAuthor,
+} from "../../../redux/features/BookSlice";
 import { useGetBooksQuery } from "../../../redux/api";
 import { useEffect } from "react";
 
 const Header = () => {
-  const { isLogin } = useSelector((state) => state.user);
+  const { isLogin, user } = useSelector((state) => state.user);
+  console.log(user.id);
   const dispatch = useDispatch();
 
   const { data } = useGetBooksQuery();
@@ -36,12 +42,19 @@ const Header = () => {
         <Navbar.Toggle aria-controls="navbarScroll" className="headerSide" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="" navbarScroll>
-            <NavLink to="/books" className="navLink mx-2">
+            <NavLink
+              to="/books"
+              className="navLink mx-2"
+              onClick={() => dispatch(filterByGenra({ userId: user.id }))}
+            >
               All-Books
             </NavLink>
 
             {isLogin ? (
               <>
+                <NavLink to="/my-books" className="navLink mx-2">
+                  My Books
+                </NavLink>
                 <NavLink to="/add-book" className="navLink mx-2">
                   Add Books
                 </NavLink>
@@ -57,7 +70,9 @@ const Header = () => {
               </>
             ) : (
               <div>
-                {/* ------------------------------------------ */}
+                <NavLink to="/bookmarks" className="navLink mx-2">
+                  Bookmarks
+                </NavLink>
                 <NavLink to="/login" className="navLink ms-2">
                   Login
                 </NavLink>
