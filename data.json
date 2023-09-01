@@ -82,6 +82,45 @@
         "id": 6
       },
       "id": 4
+    },
+    {
+      "title": "bokor",
+      "authorName": "gykghkg",
+      "genra": "Religious",
+      "picture": "/images/book2.webp",
+      "registered": "20-09-2023",
+      "user": {
+        "username": "abubakar",
+        "email": "abubakar@gmail.com",
+        "id": 6
+      },
+      "id": 5
+    },
+    {
+      "title": "bokor",
+      "authorName": "bokor vai",
+      "genra": "Thriller",
+      "picture": "/images/book2.webp",
+      "registered": "20-09-2023",
+      "user": {
+        "username": "abubakar",
+        "email": "abubakar@gmail.com",
+        "id": 6
+      },
+      "id": 6
+    },
+    {
+      "title": "bokor",
+      "authorName": "bokor vai",
+      "genra": "Religious",
+      "picture": "/images/book1.webp",
+      "registered": "19-09-2023",
+      "user": {
+        "username": "abubakar",
+        "email": "abubakar@gmail.com",
+        "id": 6
+      },
+      "id": 7
     }
   ],
   "reviews": [],

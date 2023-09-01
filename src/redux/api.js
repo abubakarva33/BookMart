@@ -9,7 +9,8 @@ export const api = createApi({
       query: () => `authors`,
     }),
     getBooks: builder.query({
-      query: () => `books?_sort=id&_order=desc`,
+      query: ({ page, limit}) =>
+        `books?_sort=id&_order=desc&_page=${page}&_limit=${limit}`,
       providesTags: ["Post"],
     }),
     getSelectedBook: builder.query({
@@ -88,5 +89,5 @@ export const {
   useAddToCartMutation,
   useRemoveCartDataMutation,
   useGetBooksByAuthorQuery,
-  useRemoveBookMutation
+  useRemoveBookMutation,
 } = api;

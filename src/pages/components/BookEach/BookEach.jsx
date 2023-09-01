@@ -20,29 +20,28 @@ const BookEach = ({ book }) => {
     if (!isLogin) {
       return navigate("/login");
     }
-    const existingData = data.find((item) => item.book.id === id)
+    const existingData = data.find((item) => item.book.id === id);
     if (!existingData) {
       Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'Book added to cart successfully',
+        position: "top",
+        icon: "success",
+        title: "Book added to cart successfully",
         showConfirmButton: false,
-        timer: 1500
-      })
+        timer: 1500,
+      });
       dispatch(addToCartBook({ book, user }));
     }
   };
-  const bookmarkHandler= ()=>{
+  const bookmarkHandler = () => {
     dispatch(addToBookmark(book));
     Swal.fire({
-      position: 'top',
-      icon: 'success',
-      title: 'Book added to bookmark successfully',
+      position: "top",
+      icon: "success",
+      title: "Book added to bookmark successfully",
       showConfirmButton: false,
-      timer: 1500
-    })
-
-  }
+      timer: 1500,
+    });
+  };
   return (
     <Col>
       <Card className="card">
@@ -67,7 +66,10 @@ const BookEach = ({ book }) => {
           <button className="border-0 rounded fs-5 py-2" onClick={cartHandler}>
             Add to Cart
           </button>
-          <button className="border-0 rounded fs-5 py-2" onClick={bookmarkHandler}> Read Later</button>
+          <button className="border-0 rounded fs-5 py-2" onClick={bookmarkHandler}>
+            {" "}
+            Read Later
+          </button>
         </div>
       </Card>
     </Col>
