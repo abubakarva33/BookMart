@@ -3,28 +3,28 @@ import Row from "react-bootstrap/Row";
 import BookEach from "../BookEach/BookEach";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { filterByGenra, setBooks } from "../../../redux/features/BookSlice";
+import { filterByGenra, setBooks, setLimit, setPage } from "../../../redux/features/BookSlice";
 import { Pagination } from "antd";
 import { useGetBooksQuery } from "../../../redux/api";
 
 const BookList = () => {
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(2);
+
   const [total, setTotal] = useState(0);
+  const { filteredBooks, filter, page, limit } = useSelector((state) => state.book);
+
+
+  console.log(!!filter)
 
   useEffect(() => {
-    fetch("http://localhost:3000/books")
+    fetch(`http://localhost:3000/books?${ filter ? "genra=" + filter : ""}`)
       .then((res) => res.json())
       .then((data) => setTotal(data.length));
-  }, []);
+  }, [filter]);
 
-  const { filteredBooks } = useSelector((state) => state.book);
-  const { data } = useGetBooksQuery({ page, limit });
 
-  useEffect(() => {
-    dispatch(setBooks(data));
-  }, [data]);
+
+
 
   useEffect(() => {
     dispatch(filterByGenra());
@@ -33,8 +33,8 @@ const BookList = () => {
 
   const onShowSizeChange = (page, limit) => {
     console.log({ page, limit });
-    setPage(page);
-    setLimit(limit);
+    dispatch(setPage(page));
+    dispatch(setLimit(limit));
   };
   return (
     <div>

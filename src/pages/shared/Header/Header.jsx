@@ -10,16 +10,20 @@ import {
   filterByGenra,
   searchByBook,
   setBooks,
+  setLimit,
+  setPage,
 } from "../../../redux/features/BookSlice";
 import { useGetBooksQuery } from "../../../redux/api";
 import { useEffect } from "react";
 
 const Header = () => {
   const { isLogin, user } = useSelector((state) => state.user);
-  console.log(user.id);
-  const dispatch = useDispatch();
+  const { page, limit, filter } = useSelector((state) => state.book);
 
-  const { data } = useGetBooksQuery();
+  const dispatch = useDispatch();
+  console.log({ page, limit, filter });
+
+  const { data } = useGetBooksQuery({ page, limit, filter });
 
   useEffect(() => {
     dispatch(setBooks(data));
@@ -32,6 +36,12 @@ const Header = () => {
   const onFinish = ({ searchBox }) => {
     dispatch(searchByBook(searchBox));
   };
+
+  const clearFilter = () => {
+    dispatch(filterByGenra(""));
+    dispatch(setPage(1));
+    dispatch(setLimit(2));
+  };
   return (
     <Navbar expand="lg" className="header">
       <Container fluid>
@@ -41,10 +51,7 @@ const Header = () => {
         <Navbar.Toggle aria-controls="navbarScroll" className="headerSide" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="" navbarScroll>
-            <NavLink
-              to="/books"
-              className="navLink mx-2"
-            >
+            <NavLink to="/books" className="navLink mx-2" onClick={clearFilter}>
               All-Books
             </NavLink>
 

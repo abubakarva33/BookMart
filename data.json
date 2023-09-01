@@ -121,6 +121,19 @@
         "id": 6
       },
       "id": 7
+    },
+    {
+      "title": "biology",
+      "authorName": "bokor",
+      "genra": "Religious",
+      "picture": "/images/book2.webp",
+      "registered": "28-09-2023",
+      "user": {
+        "username": "abubakar",
+        "email": "abubakar@gmail.com",
+        "id": 6
+      },
+      "id": 8
     }
   ],
   "reviews": [],

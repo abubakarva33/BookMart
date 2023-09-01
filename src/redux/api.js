@@ -9,8 +9,10 @@ export const api = createApi({
       query: () => `authors`,
     }),
     getBooks: builder.query({
-      query: ({ page, limit}) =>
-        `books?_sort=id&_order=desc&_page=${page}&_limit=${limit}`,
+      query: ({ page, limit, filter }) =>
+        `books?_sort=id&_order=desc&_page=${page}&_limit=${limit}&${
+          filter ? "genra=" + filter : ""
+        }`,
       providesTags: ["Post"],
     }),
     getSelectedBook: builder.query({
