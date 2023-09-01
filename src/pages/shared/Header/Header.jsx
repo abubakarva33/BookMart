@@ -10,7 +10,6 @@ import {
   filterByGenra,
   searchByBook,
   setBooks,
-  filterByAuthor,
 } from "../../../redux/features/BookSlice";
 import { useGetBooksQuery } from "../../../redux/api";
 import { useEffect } from "react";
@@ -45,7 +44,6 @@ const Header = () => {
             <NavLink
               to="/books"
               className="navLink mx-2"
-              onClick={() => dispatch(filterByGenra({ userId: user.id }))}
             >
               All-Books
             </NavLink>

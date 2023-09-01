@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useAddToCartMutation, useGetCartDataQuery } from "../../../redux/api";
 import { addToBookmark } from "../../../redux/features/BookmarkSlice";
+import Swal from "sweetalert2";
 
 const BookEach = ({ book }) => {
   const { authorName, picture, title, genra, registered, id } = book;
@@ -21,9 +22,27 @@ const BookEach = ({ book }) => {
     }
     const existingData = data.find((item) => item.book.id === id)
     if (!existingData) {
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Book added to cart successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
       dispatch(addToCartBook({ book, user }));
     }
   };
+  const bookmarkHandler= ()=>{
+    dispatch(addToBookmark(book));
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Book added to bookmark successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+  }
   return (
     <Col>
       <Card className="card">
@@ -48,7 +67,7 @@ const BookEach = ({ book }) => {
           <button className="border-0 rounded fs-5 py-2" onClick={cartHandler}>
             Add to Cart
           </button>
-          <button className="border-0 rounded fs-5 py-2" onClick={()=>dispatch(addToBookmark(book))}> Read Later</button>
+          <button className="border-0 rounded fs-5 py-2" onClick={bookmarkHandler}> Read Later</button>
         </div>
       </Card>
     </Col>

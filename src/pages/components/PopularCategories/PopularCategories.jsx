@@ -12,7 +12,7 @@ const PopularCategories = () => {
   return (
     <div>
       <h3 className="mt-4">Popular Category</h3>
-      <Row xs={3} md={6} className="g-4 fs-4 mb-5 mt-3 mx-4">
+      <Row xs={2} md={3} lg={6} className="g-4 fs-4 mb-5 mt-3 mx-4">
         <Col>
           <div className="category" onClick={() => dispatch(filterByGenra("Thriller"))}>
             <FaBity className="fs-1 m-4 " color="#00473e" />

@@ -71,78 +71,62 @@
       "id": 2
     },
     {
-      "title": "botany",
+      "title": "bokor",
       "authorName": "bokor vai",
-      "genra": "Romantic",
-      "picture": "/images/book4.webp",
-      "registered": "25-09-2023",
-      "user": {
-        "username": "dfgdsg",
-        "email": "bakar@gmail.com",
-        "id": 5
-      },
-      "id": 3
-    },
-    {
-      "title": "new",
-      "authorName": "abubakar",
-      "genra": "Horor",
-      "picture": "/images/book4.webp",
-      "registered": "29-08-2023",
+      "genra": "Science Fiction",
+      "picture": "/images/book3.webp",
+      "registered": "12-09-2023",
       "user": {
         "username": "abubakar",
         "email": "abubakar@gmail.com",
         "id": 6
       },
       "id": 4
-    },
-    {
-      "title": "sgsdg",
-      "authorName": "sdfhdfhd",
-      "genra": "others",
-      "picture": "/images/book4.webp",
-      "registered": "04-10-2023",
-      "user": {
-        "username": "abubakar",
-        "email": "abubakar@gmail.com",
-        "id": 6
-      },
-      "id": 5
     }
   ],
-  "reviews": [
-    {
-      "about": "hii\n",
-      "user": {
-        "username": "abubakar",
-        "email": "abubakar@gmail.com",
-        "id": 6
-      },
-      "bookId": 3,
-      "id": 1
-    }
-  ],
+  "reviews": [],
   "cartData": [
     {
       "book": {
         "title": "bokor",
-        "authorName": "bokor",
-        "genra": "Horor",
+        "authorName": "bokor vai",
+        "genra": "Science Fiction",
         "picture": "/images/book3.webp",
-        "registered": "28-09-2023",
+        "registered": "12-09-2023",
+        "user": {
+          "username": "abubakar",
+          "email": "abubakar@gmail.com",
+          "id": 6
+        },
+        "id": 4
+      },
+      "user": {
+        "username": "abubakar",
+        "email": "abubakar@gmail.com",
+        "id": 6
+      },
+      "id": 1
+    },
+    {
+      "book": {
+        "title": "biology",
+        "authorName": "mithil",
+        "genra": "Romantic",
+        "picture": "/images/book5.webp",
+        "registered": "12-09-2023",
         "user": {
           "username": "dfgdsg",
           "email": "bakar@gmail.com",
           "id": 5
         },
-        "id": 1
+        "id": 2
       },
       "user": {
-        "username": "dfgdsg",
-        "email": "bakar@gmail.com",
-        "id": 5
+        "username": "abubakar",
+        "email": "abubakar@gmail.com",
+        "id": 6
       },
-      "id": 1
+      "id": 2
     }
   ]
 }

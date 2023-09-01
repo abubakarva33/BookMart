@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   books: [],
   filteredBooks: [],
-  filteredBooksByAuthor: [],
 };
 
 export const bookSlice = createSlice({
@@ -32,15 +31,6 @@ export const bookSlice = createSlice({
         state.filteredBooks = state.books;
       }
     },
-    filterByAuthor: (state, { payload }) => {
-      console.log(payload);
-      if (payload) {
-        state.filteredBooksByAuthor = state.books.filter((item) => item.user.id === payload);
-        if (!state.filteredBooksByAuthor) {
-          state.filteredBooksByAuthor = [];
-        }
-      }
-    },
     setBooks: (state, { payload }) => {
       state.books = payload;
       state.filteredBooks = payload;
@@ -48,6 +38,6 @@ export const bookSlice = createSlice({
   },
 });
 
-export const { searchByBook, setBooks, filterByGenra, filterByAuthor } = bookSlice.actions;
+export const { searchByBook, setBooks, filterByGenra } = bookSlice.actions;
 const userReducer = bookSlice.reducer;
 export default userReducer;

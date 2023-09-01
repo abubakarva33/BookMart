@@ -20,6 +20,13 @@ export const api = createApi({
       query: (authorId) => `books/?user.id=${authorId}`,
       providesTags: ["Post"],
     }),
+    removeBook: builder.mutation({
+      query: (id) => ({
+        url: `books/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Post"],
+    }),
     getComments: builder.query({
       query: (bookId) => `reviews?bookId=${bookId}&_sort=id&_order=desc`,
       providesTags: ["Post"],
@@ -80,5 +87,6 @@ export const {
   useGetCartDataQuery,
   useAddToCartMutation,
   useRemoveCartDataMutation,
-  useGetBooksByAuthorQuery
+  useGetBooksByAuthorQuery,
+  useRemoveBookMutation
 } = api;

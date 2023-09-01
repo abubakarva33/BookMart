@@ -3,8 +3,8 @@ import { Button, Form, Input, Select } from "antd";
 import { DatePicker } from "antd";
 import { usePostABookMutation } from "../../../redux/api";
 const { Option } = Select;
-import swal from "sweetalert";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const AddBook = () => {
   const { user } = useSelector((state) => state.user);
@@ -22,12 +22,12 @@ const AddBook = () => {
     };
     createBook(data);
     form.resetFields();
-    swal({
-      title: "Good job!",
-      text: "You clicked the button!",
-      icon: "success",
-      button: "Aww yiss!",
-    });
+    Swal.fire({
+      icon: 'success',
+      title: 'Your book has been added successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
   };
   return (
     <div className="w-50 mx-auto">

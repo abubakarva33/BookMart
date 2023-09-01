@@ -16,7 +16,7 @@ const BookList = () => {
     <div>
       <>
         <h3>Popular Books</h3>
-        <Row xs={1} xm={2} md={3} className="g-4 mt-1 mb-5">
+        <Row xs={1} sm={2} md={2} lg={3} className="g-4 mt-1 mb-5">
           {filteredBooks?.length !=0 ? (
             filteredBooks?.map((book, idx) => <BookEach key={idx} book={book} />)
           ) : (
