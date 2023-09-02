@@ -4,7 +4,7 @@ const initialState = {
   books: [],
   filteredBooks: [],
   filter: "",
-  limit: 2,
+  limit: 6,
   page: 1,
 };
 
@@ -26,14 +26,7 @@ export const bookSlice = createSlice({
     },
     filterByGenra: (state, { payload }) => {
       state.filter = payload;
-      if (payload) {
-        //   state.filteredBooks = state.books.filter((item) => item.genra === payload);
-        //   if (!state.filteredBooks) {
-        //     state.filteredBooks = [];
-        //   }
-        // } else {
-        //   state.filteredBooks = state.books;
-      }
+      state.page = 1;
     },
     setLimit: (state, { payload }) => {
       state.limit = payload;

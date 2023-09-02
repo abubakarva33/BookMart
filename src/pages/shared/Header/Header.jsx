@@ -17,7 +17,7 @@ import { useGetBooksQuery } from "../../../redux/api";
 import { useEffect } from "react";
 
 const Header = () => {
-  const { isLogin, user } = useSelector((state) => state.user);
+  const { isLogin } = useSelector((state) => state.user);
   const { page, limit, filter } = useSelector((state) => state.book);
 
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const Header = () => {
   const clearFilter = () => {
     dispatch(filterByGenra(""));
     dispatch(setPage(1));
-    dispatch(setLimit(2));
+    dispatch(setLimit(6));
   };
   return (
     <Navbar expand="lg" className="header">

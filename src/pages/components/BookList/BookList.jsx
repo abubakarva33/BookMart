@@ -3,33 +3,26 @@ import Row from "react-bootstrap/Row";
 import BookEach from "../BookEach/BookEach";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { filterByGenra, setBooks, setLimit, setPage } from "../../../redux/features/BookSlice";
+import { filterByGenra, setLimit, setPage } from "../../../redux/features/BookSlice";
 import { Pagination } from "antd";
-import { useGetBooksQuery } from "../../../redux/api";
 
 const BookList = () => {
   const dispatch = useDispatch();
 
   const [total, setTotal] = useState(0);
-  const { filteredBooks, filter, page, limit } = useSelector((state) => state.book);
+  const { filteredBooks, filter, page} = useSelector((state) => state.book);
 
-
-  console.log(!!filter)
+  console.log(!!filter);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/books?${ filter ? "genra=" + filter : ""}`)
+    fetch(`http://localhost:3000/books?${filter ? "genra=" + filter : ""}`)
       .then((res) => res.json())
       .then((data) => setTotal(data.length));
   }, [filter]);
 
-
-
-
-
   useEffect(() => {
     dispatch(filterByGenra());
   }, []);
-  let pageNumber = Math.ceil(filteredBooks?.length / 2);
 
   const onShowSizeChange = (page, limit) => {
     console.log({ page, limit });
@@ -46,20 +39,13 @@ const BookList = () => {
           ) : (
             <p> No book found with this criteria</p>
           )}
-
-          {filteredBooks?.length >= 5 ? (
-            <div>
-              {Array.from({ length: pageNumber }, (_, index) => index + 1).map((page) => (
-                <p key={page}> page {page}</p>
-              ))}
-            </div>
-          ) : null}
         </Row>
         <Pagination
           showSizeChanger
           onChange={onShowSizeChange}
-          defaultCurrent={1}
-          defaultPageSize={2}
+          defaultCurrent={page}
+          current={page}
+          defaultPageSize={6}
           total={total}
         />
       </>
